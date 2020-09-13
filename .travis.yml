@@ -2,6 +2,11 @@ dist: bionic
 language: python
 
 install:
+  - wget https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
+  - gpg --list-packets tarsnap-deb-packaging-key.asc | grep signature
+  - sudo apt-key add tarsnap-deb-packaging-key.asc
+  - sudo apt-get update
+  - sudo apt-get install tarsna
   - pip install -r .requirements.txt
 
 script:

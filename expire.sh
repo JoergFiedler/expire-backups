@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 current_dir=`pwd`
 keyfile="./${HOST}.key"
 
@@ -31,7 +33,7 @@ sed -i '' \
   ./${HOST}/tarsnapper.yml
 
 echo "Running fsck …"
-/usr/local/bin/tarsnap \
+tarsnap \
   --fsck \
   --keyfile ${keyfile} \
   --cachedir ${cache_dir}

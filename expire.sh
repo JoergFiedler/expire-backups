@@ -20,6 +20,7 @@ cache_dir="${current_dir}/${HOST}/cache"
 
 echo "Copying tarsnap config …"
 scp \
+  -f ssh-config \
   -i travis.ssh-key \
   -rq ${HOST}:/usr/local/etc/tarsnapp\* \
   ${HOST}/

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -ex
 
 current_dir=`pwd`
 keyfile="./${HOST}.key"

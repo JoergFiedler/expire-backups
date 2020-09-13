@@ -15,6 +15,8 @@ if [ ! -f "${keyfile}" ]; then
   exit 1
 fi
 
+chmod 600 ${keyfile}
+
 echo "Expiring backups for: ${HOST}"
 cache_dir="${current_dir}/${HOST}/cache"
 

@@ -10,21 +10,13 @@ if [ -z "${HOST}" ]; then
   exit 1
 fi
 
-if [ ! -f "${keyfile}.enc" ]; then
-  echo "Encrypted key file ${keyfile} does not exist"
+if [ ! -f "${keyfile}" ]; then
+  echo "Key file ${keyfile} does not exist"
   exit 1
 fi
 
 echo "Expiring backups for: ${HOST}"
 cache_dir="${current_dir}/${HOST}/cache"
-
-echo "Decrypting key …"
-openssl aes-256-cbc \
-  -K $encrypted_0a6446eb3ae3_key \
-  -iv $encrypted_0a6446eb3ae3_iv \
-  -in ${keyfile}.enc \
-  -out ${keyfile} \
-  -d
 
 echo "Copying tarsnap config …"
 scp -rq ${HOST}:/usr/local/etc/tarsnapp\* ${HOST}/

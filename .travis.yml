@@ -1,16 +1,24 @@
 dist: bionic
 language: python
-
+before_install:
+- openssl aes-256-cbc -K $encrypted_ccf7d81117c6_key -iv $encrypted_ccf7d81117c6_iv
+  -in mmt.key.enc -out mmt.key -d
+- openssl aes-256-cbc -K $encrypted_de6b9c797868_key -iv $encrypted_de6b9c797868_iv
+  -in php-2a.key.enc -out php-2a.key -d
+- openssl aes-256-cbc -K $encrypted_a5e52bf915c5_key -iv $encrypted_a5e52bf915c5_iv
+  -in php-1a.key.enc -out php-1a.key -d
+- openssl aes-256-cbc -K $encrypted_0ca20dcc20fe_key -iv $encrypted_0ca20dcc20fe_iv
+  -in olsa.key.enc -out olsa.key -d
 install:
-  - wget https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
-  - gpg --list-packets tarsnap-deb-packaging-key.asc | grep signature
-  - sudo apt-key add tarsnap-deb-packaging-key.asc
-  - echo "deb http://pkg.tarsnap.com/deb/$(lsb_release -s -c) ./" | sudo tee -a /etc/apt/sources.list.d/tarsnap.list
-  - sudo apt-get update
-  - sudo apt-get install tarsnap
-  - pip install -r .requirements.txt
-
+- wget https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
+- gpg --list-packets tarsnap-deb-packaging-key.asc | grep signature
+- sudo apt-key add tarsnap-deb-packaging-key.asc
+- echo "deb http://pkg.tarsnap.com/deb/$(lsb_release -s -c) ./" | sudo tee -a /etc/apt/sources.list.d/tarsnap.list
+- sudo apt-get update
+- sudo apt-get install tarsnap
+- pip install -r .requirements.txt
 script:
-  - HOST=olsa ./expire.sh
-  - HOST=php-1a ./expire.sh
-
+- HOST=olsa ./expire.sh
+- HOST=php-1a ./expire.sh
+after_script:
+- rm -rf *.key

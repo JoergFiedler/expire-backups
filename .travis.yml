@@ -6,7 +6,7 @@ install:
   - gpg --list-packets tarsnap-deb-packaging-key.asc | grep signature
   - sudo apt-key add tarsnap-deb-packaging-key.asc
   - sudo apt-get update
-  - sudo apt-get install tarsna
+  - sudo apt-get install tarsnap
   - pip install -r .requirements.txt
 
 script:

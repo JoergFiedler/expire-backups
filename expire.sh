@@ -8,8 +8,8 @@ if [ -z "${HOST}" ]; then
   exit 1
 fi
 
-if [ ! -f "${keyfile}" ]; then
-  echo "Key file ${keyfile} does not exist"
+if [ ! -f "${keyfile}.enc" ]; then
+  echo "Encrypted key file ${keyfile} does not exist"
   exit 1
 fi
 

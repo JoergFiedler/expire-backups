@@ -1,0 +1,9 @@
+dist: bionic
+language: python
+
+install:
+  - pip install -r .requirements.txt
+
+script:
+  - HOST=olsa ./expire.sh
+

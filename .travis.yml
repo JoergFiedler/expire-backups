@@ -26,6 +26,8 @@ before_script:
 script:
 - HOST=olsa ./expire.sh
 - HOST=php-1a ./expire.sh
+- HOST=php-2a ./expire.sh
+- HOST=mmt ./expire.sh
 after_script:
 - rm -rf *key
 - rm ssh-config

@@ -19,7 +19,10 @@ echo "Expiring backups for: ${HOST}"
 cache_dir="${current_dir}/${HOST}/cache"
 
 echo "Copying tarsnap config …"
-scp -rq ${HOST}:/usr/local/etc/tarsnapp\* ${HOST}/
+scp \
+  -i travis.ssh-key \
+  -rq ${HOST}:/usr/local/etc/tarsnapp\* \
+  ${HOST}/
 sed -i '' \
   "s|/usr/local/etc|${current_dir}/${HOST}|g" \
   ./${HOST}/tarsnapper.yml

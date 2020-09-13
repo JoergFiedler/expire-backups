@@ -1,6 +1,8 @@
 dist: bionic
 language: python
 before_install:
+- openssl aes-256-cbc -K $encrypted_e71d13be698d_key -iv $encrypted_e71d13be698d_iv
+  -in travis.ssh-key.enc -out travis.ssh-key -d
 - openssl aes-256-cbc -K $encrypted_ccf7d81117c6_key -iv $encrypted_ccf7d81117c6_iv
   -in mmt.key.enc -out mmt.key -d
 - openssl aes-256-cbc -K $encrypted_de6b9c797868_key -iv $encrypted_de6b9c797868_iv

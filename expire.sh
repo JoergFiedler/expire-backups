@@ -20,7 +20,7 @@ cache_dir="${current_dir}/${HOST}/cache"
 
 echo "Copying tarsnap config …"
 scp \
-  -f ssh-config \
+  -F ssh-config \
   -i travis.ssh-key \
   -rq ${HOST}:/usr/local/etc/tarsnapp\* \
   ${HOST}/
@@ -42,5 +42,4 @@ tarsnapper \
   expire
 
 echo "Deleting temporary data …"
-rm -rf ${keyfile}
 rm -rf ${cache_dir}

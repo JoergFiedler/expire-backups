@@ -6,4 +6,5 @@ install:
 
 script:
   - HOST=olsa ./expire.sh
+  - HOST=php-1a ./expire.sh
 

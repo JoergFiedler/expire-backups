@@ -21,6 +21,8 @@ install:
 - sudo apt-get update
 - sudo apt-get install tarsnap
 - pip install -r .requirements.txt
+before_script:
+- chmod 600 travis.ssh-key
 script:
 - HOST=olsa ./expire.sh
 - HOST=php-1a ./expire.sh

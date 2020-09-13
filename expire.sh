@@ -19,6 +19,7 @@ echo "Expiring backups for: ${HOST}"
 cache_dir="${current_dir}/${HOST}/cache"
 
 echo "Copying tarsnap config …"
+mkdir ${HOST}
 scp \
   -F ssh-config \
   -i travis.ssh-key \

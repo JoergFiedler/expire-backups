@@ -5,6 +5,7 @@ install:
   - wget https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
   - gpg --list-packets tarsnap-deb-packaging-key.asc | grep signature
   - sudo apt-key add tarsnap-deb-packaging-key.asc
+  - deb http://pkg.tarsnap.com/deb/$(lsb_release -s -c) ./" | sudo tee -a /etc/apt/sources.list.d/tarsnap.list
   - sudo apt-get update
   - sudo apt-get install tarsnap
   - pip install -r .requirements.txt

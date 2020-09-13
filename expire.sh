@@ -25,7 +25,7 @@ scp \
   -i travis.ssh-key \
   -rq ${HOST}:/usr/local/etc/tarsnapp\* \
   ${HOST}/
-sed -i '' \
+sed -i.save \
   "s|/usr/local/etc|${current_dir}/${HOST}|g" \
   ./${HOST}/tarsnapper.yml
 

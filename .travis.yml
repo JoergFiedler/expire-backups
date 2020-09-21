@@ -24,10 +24,10 @@ install:
 before_script:
 - chmod 600 travis.ssh-key
 script:
-- HOST=olsa ./expire.sh
-- HOST=php-1a ./expire.sh
-- HOST=php-2a ./expire.sh
-- HOST=mmt ./expire.sh
+- HOST=olsa travis_wait 90 ./expire.sh
+- HOST=php-1a travis_wait 90 ./expire.sh
+- HOST=php-2a travis_wait 90 ./expire.sh
+- HOST=mmt travis_wait 90 ./expire.sh
 after_script:
 - rm -rf *key
 - rm ssh-config

@@ -23,11 +23,25 @@ install:
 - pip install -r .requirements.txt
 before_script:
 - chmod 600 travis.ssh-key
-script:
-- HOST=olsa travis_wait 90 ./expire.sh
-- HOST=php-1a travis_wait 90 ./expire.sh
-- HOST=php-2a travis_wait 90 ./expire.sh
-- HOST=mmt travis_wait 90 ./expire.sh
+jobs:
+  include:
+    - stage: Expire
+      name: Expire olsa
+      env: HOST=olsa
+      script: travis_wait 90 ./expire.sh
+    - stage: Expire
+      name: Expire php-1a
+      env: HOST=php-1a
+      script: travis_wait 90 ./expire.sh
+    - stage: Expire
+      name: Expire php-2a
+      env: HOST=php-2a
+      script: travis_wait 90 ./expire.sh
+    - stage: Expire
+      name: Expire mmt
+      env: HOST=mmt
+      script: travis_wait 90 ./expire.sh
+
 after_script:
 - rm -rf *key
 - rm ssh-config
